@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      function Header() {
+        return (
+          <header>
+            <h1>Getting Started with React!</h1>
+          </header>
+        );
+      }
+
+      function MyNameIs(props) {
+        return <span>Hi, my name is {props.name}</span>;
+      }
+
+      function Animals(props) {
+        return (
+          <React.Fragment>
+            <ul>
+              {props.animals.map((animal) => (
+                <li key={animal.id}>{animal.name}</li>
+              ))}
+            </ul>
+            <img
+              height={200}
+              src="https://images.pexels.com/photos/792381/pexels-photo-792381.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="An image of a tiger"
+            />
+          </React.Fragment>
+        );
+      }
+
+      function Footer(props) {
+        return (
+          <footer>
+            <p>Copyright {props.year}</p>
+          </footer>
+        );
+      }
+
+      const animals = ["🐯", "🐱", "🐶"];
+      const animalObjects = animals.map((animal, i) => ({
+        id: i,
+        name: animal,
+      }));
+
+      function App() {
+        return (
+          <React.Fragment>
+            <Header />
+            <MyNameIs name="Josh" />
+            <Animals animals={animalObjects} />
+            <Footer year={new Date().getFullYear()} />
+          </React.Fragment>
+        );
+      }
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+    </script>
+  </body>
+</html>
